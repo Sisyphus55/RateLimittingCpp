@@ -1,5 +1,5 @@
 # Rate Limitting feature as Cpp library
-Bazel project that implements thread safe, token bucket based rate limiting algorithm. Appropriate test cases has been added to validate the functionality of Rate Limitter
+Bazel project that implements thread safe, asynchronous token bucket based rate limiting algorithm. Appropriate test cases has been added to validate the functionality of Rate Limitter
 # Usage
 
 ### Get rate limitter instance with rate and burst defined
@@ -35,9 +35,16 @@ void callback(std::string str) {
   std::cout << "Token Is available!!" << std::endl;
   std::cout<<str<<std::endl;
 }
-void main() {
+int main() {
   RateLimitter *rt = RateLimitter::New(1, 1); //would take 10 seconds to generate 10 tokens.
   rt->Reserve(callback,10, "10 tokens has been requested");
+  return 0;
 }
 ```
 The above code would call the callback after approximately 10 seconds and would print *10 tokens has been requested* . Note that, it is recommended to invoke **rt->Reserve(callback,10, "10 tokens has been requested")** inside a thread, so that the next line after can be executed without being blocked for 10 seconds.
+
+### Reset to initial state.
+```
+rt->Reset();
+```
+This would reset the relevant counter to initial state. 
