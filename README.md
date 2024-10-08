@@ -48,3 +48,13 @@ The above code would call the callback after approximately 10 seconds and would 
 rt->Reset();
 ```
 This would reset the relevant counter to initial state. 
+
+### Poll if token is accessible. 
+```
+bool token_available = rt->PollReserve(1);
+
+if (token_available) std::cout<< "Token available, request can be made"<<std::endl;
+else std::cout<<"Token not available"<<std::endl;
+```
+Sometimes client can just query if the tokens are available now. This is different from Reserve, as *Reserve* API **query and reserve** the token request. Whereas *PollReserve* API only **query** about the token request, no real token reservation is done".
+
