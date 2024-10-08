@@ -24,6 +24,9 @@ public:
   void Reserve(callback_function cf, uint32_t tokens,
                std::string custom_string = "");
 
+  //Polls if n tokens are available to get.
+  bool PollReserve(uint32_t tokens);
+
 private:
   RateLimitter(uint32_t rate, uint32_t burst);
   RateLimitter() {}

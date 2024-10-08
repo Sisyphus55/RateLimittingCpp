@@ -52,6 +52,18 @@ bool RateLimitter::Reserve(uint32_t tokens) {
   return true;
 }
 
+bool RateLimitter::PollReserve(uint32_t tokens) {
+	std::chrono::time_point<std::chrono::system_clock> time_now =
+      std::chrono::system_clock::now();
+
+  	float token_available = advance(time_now);
+
+	if (token_available >= tokens) return true;
+
+	else return false;
+}
+
+
 float RateLimitter::advance(
     std::chrono::time_point<std::chrono::system_clock> time_base) {
   int duration_in_useconds =
