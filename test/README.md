@@ -1,1 +1,4 @@
-run **bazel test unit_test**
+# Usage
+```
+bazel test //test::unit_test
+```
