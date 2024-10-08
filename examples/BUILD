@@ -5,3 +5,11 @@ cc_binary(
             "//lib:rateLimitter",
         ],
 )
+
+cc_binary(
+        name = "simple_example_callback",
+        srcs = ["simple_example_callback.cc"],
+        deps = [
+            "//lib:rateLimitter",
+        ],
+)
