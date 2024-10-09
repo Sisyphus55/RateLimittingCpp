@@ -1,10 +1,15 @@
 
+#include "lib/rateLimitter.h"
 #include "stdio.h"
-#include  "lib/rateLimitter.h"
-int main () {
-	RateLimitter* rt = RateLimitter::New(10,10);
-  	for (int i=0;i<=11;i++) std::cout<<rt->Reserve(1)<<std::endl;
-  	std::cout<<"Done Requests\n";
+int main() {
+  RateLimitter *rt = RateLimitter::New(10, 10);//Inititialize rateLimitter with rate =10 and burst = 10
+  for (int i = 0; i <= 10; i++) {
+    bool canAccess = rt->Reserve(1);
+    if (canAccess) {
+      std::cout << "Token available" << std::endl;
+    } else
+      std::cout << "Token not available" << std::endl;
+  }
 
-	return 0;
+  return 0;
 }
