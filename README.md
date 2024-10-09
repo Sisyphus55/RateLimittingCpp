@@ -49,7 +49,7 @@ rt->Reset();
 ```
 This would reset the relevant counter to initial state. 
 
-### Poll if token is accessible. 
+### Poll if token is available. 
 ```
 bool token_available = rt->PollReserve(1);
 
@@ -58,7 +58,7 @@ else std::cout<<"Token not available"<<std::endl;
 ```
 Sometimes applications might just query if requested tokens are available Now. 
 
-**Note** This is different from Reserve API, as *Reserve* API gurantees that you are granted a tokens, this does not. The correct way of using this API is:
+**Note** This is different from Reserve API, as *Reserve* API gurantees that you are granted a tokens, *PollReserve* does not. The correct way of using this API is:
 ```
 bool token_available = rt->PollReserve(1);
 
@@ -70,14 +70,14 @@ if (token_available) {
   }
 }
 ```
-or simply,
+or simply, avoid calling it.
 ```
 bool canAccess = rt->Reserve(1);
-  if (canAccess) {
-    //Do the rate limiting tasks based on your use case.
-  }
+if (canAccess) {
+  //Do the rate limiting tasks based on your use case.
+}
 ```
-  
+
   
 
 
