@@ -1,5 +1,5 @@
 # Rate Limitting feature as Cpp library
-Bazel project that implements thread safe, asynchronous token bucket based rate limiting algorithm. Appropriate test cases has been added to validate the functionality of Rate Limitter
+Bazel project that implements thread safe, asynchronous token bucket based rate limiting algorithm. Appropriate test cases has been added to validate the functionality of Rate Limitter.
 # Usage
 
 ### Get rate limitter instance with rate and burst defined
