@@ -1,7 +1,7 @@
 cc_library(
     name="rateLimitter",
     hdrs=["rateLimitter.h"],
-    srcs=["rateLimitter.cc"],
+    srcs=["rateLimitter.cpp"],
     visibility = ["//visibility:public"],
 )
 
